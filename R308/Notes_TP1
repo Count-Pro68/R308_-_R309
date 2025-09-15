@@ -1,0 +1,68 @@
+#** ** ** ** ** ** ** ** ** ** ** ** *
+# PARTIE FONCTIONS
+#** ** ** ** ** ** ** ** ** ** ** ** *
+
+def comparaison(a: float, b: float) -> float:
+    if a > b:
+        return a
+    else:
+        return b
+print(f'comparaison 10 et 3 : "{comparaison(a,b)}")
+
+#___________________________
+
+
+def compseuil(val: float, seuil: float = 3) -> bool:
+    if val > seuil:
+        return true
+    else:
+        return false
+
+
+print(f"comparaison avec seuil par defaut {compseuil(10)}")
+print(f"comparaison avec seuil {compseuil(10, 50)}")
+#___________________________
+
+
+def maximum(*args) -> float:
+    max = args[0]
+    for p in args:
+        if p > max:
+            max = p
+        return max
+    print(f"maximum : {maximum(10, 2, 23, 11, 19, 44, 0, -5, 3)}
+#___________________________
+
+
+def compseuil2(*angs, seuil: float = 3) -> int:
+    nb: int = 0
+    for p in args:
+        if p > seuil:
+            nb += 1
+    return nb
+
+
+print(f"liste avec seuil par defaut{compseuil2(12, 5, 3, 10, -1, 0, 3, 5)}")
+print(f"liste avec seuil defini{compseuil2(12, 5, 3, 10, seuil=5)}")
+
+#___________________________
+
+
+class Tasse:
+    matiere: str = "Céramique"
+
+    def __init__(self, couleur: str, contenance: float, marque: str):
+        self.couleur = couleur
+        self.contenance = contenance
+        self.marque = marque
+
+
+if __name__ == "__main__":
+    tasse = Tasse("bleue", 12.5, "toto")
+    print(tasse.__str__())
+    print(vars(tasse))
+    print(vars(Tasse))
+    print(vars(object))
+#___________________________
+
+
