@@ -47,3 +47,12 @@ class Cercle:
             self.__centre = centre
         else :
             self.__centre = Point(0.0)
+
+def get.x(self):
+    return self.__x:
+
+def set.x(self, x:float):
+    self.__x=x
+
+x=property(get.x, set.x) #méthode de suppression
+
