@@ -1,4 +1,5 @@
 import math
+from operator import truediv
 from symtable import Class
 """
 ********************
@@ -65,6 +66,7 @@ class Cercle:
         else:
             self.__centre = Point(0.0, 0.0)
 
+    #getter pour le rayon
     def get_rayon(self):
         return self.__rayon
 
@@ -84,6 +86,16 @@ class Cercle:
 
     centre = property(get_centre, set_centre)
 
+    def appartient(selfpoint : Point) -> bool:
+        if self.__centre.distancePoint(point)<self.__rayon :
+            return true
+        else :
+            return false
+
+    def intersection(autre)->bool:
+        if self.__centre.distancePoint(autre.__centre)<(self.__rayon+centre.__rayon):
+            return true
+        return false
 """
 ********************
 Class Rectangle
@@ -139,8 +151,7 @@ class Rectangle:
         return Point(self.__bas_gauche.x + self.__longueur, self.__bas_gauche.y)
 
     def contient(self, p: Point) -> bool:
-        return (self.__bas_gauche.x <= p.x <= self.__bas_gauche.x + self.__longueur and
-                self.__bas_gauche.y <= p.y <= self.__bas_gauche.y + self.__hauteur)
+        return (self.__bas_gauche.x <= p.x <= self.__bas_gauche.x + self.__longueur and self.__bas_gauche.y <= p.y <= self.__bas_gauche.y + self.__hauteur)
 
 #Type d'utilisation
 if __name__ == "__main__":
