@@ -22,16 +22,16 @@ def division_reelle(a, b): # défini la foncion "division_reelle
         print("Erreur de type :", te) # Si le type est mauvais, alors on affiche un message d'erreur
         return None
 
-    except ZeroDivisionError as zde: # impossible de diviser par zéro
+    except ZeroDivisionError as zde: # Impossible de diviser par zéro
         print("Erreur de division :", zde) # message d'erreur
         return None
 
-    except Exception as e: # traitement des autres exceptions de la classe Exception
+    except Exception as e: # Traitement des autres exceptions de la classe Exception
         print("Erreur inattendue :", e) # Message d'erreur
         return None
 
     else:
-        print("Résultat de la division :", resultat)#
+        print("Résultat de la division :", resultat)# Affiche le resultat du calcul
         return resultat
 
     finally:

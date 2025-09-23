@@ -2,6 +2,17 @@ import math
 from operator import truediv
 from symtable import Class
 """
+Rappel de fonctionnement UML + doc
+__init__ => attribu privé
+__str__
+accesseurs 
+    get
+    set
+"""
+
+
+
+"""
 ********************
 Class Point
 ********************
@@ -20,6 +31,8 @@ class Point:
 
     @x.setter
     def x(self, x : float):
+        if not isinstance(x, float):
+            raise TyperError("x doit être un réel")
         self.__x = x
 
     #Property for y
@@ -29,6 +42,8 @@ class Point:
 
     @y.setter
     def y(self, y: float):
+        if not isinstance(y, float):
+            raise TypeError("y doit être un réel")
         self.__y = y
 
     def __str__(self):
@@ -50,6 +65,7 @@ if __name__ == "__main__":
     print(p2)
     print(f"distance :{p1.distancecoordonnees(2.2)}")
     print(f"distance :{p1.distancePoint(p2)}")
+
 
 """
 ********************
@@ -96,8 +112,6 @@ class Cercle:
         if self.__centre.distancePoint(autre.__centre)<(self.__rayon+centre.__rayon):
             return true
         return false
-
-
 """
 ********************
 Class Rectangle

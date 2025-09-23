@@ -1,0 +1,108 @@
+import math
+
+class Point:
+    def __init__(self, x: float = 0.0, y: float = 0.0):
+        self.x = x
+        self.y = y
+
+    # Propriété pour x
+    @property
+    def x(self) -> float:
+        return self.__x
+
+    @x.setter
+    def x(self, x: float):
+        if not isinstance(x, float):
+            raise TypeError("x doit être un float.")
+        self.__x = x
+
+    # Propriété pour y
+    @property
+    def y(self) -> float:
+        return self.__y
+
+
+    @y.setter
+    def y(self, y: float):
+        if not isinstance(y, float):
+            raise TypeError("y doit être un float.")
+        self.__y = y
+
+    def __str__(self):
+        return f"Point : ({self.x}, {self.y})"
+
+    def distancecoordonnees(self, x: float, y: float) -> float:
+        return math.sqrt((self.x - x) ** 2 + (self.y - y) ** 2)
+
+    def distancePoint(self, p: "Point") -> float:
+        return math.sqrt((self.x - p.x) ** 2 + (self.y - p.y) ** 2)
+
+    def deplacer(self, dx: float, dy: float):
+        self.x += dx
+        self.y += dy
+
+# Exemple d'utilisation
+if __name__ == "__main__":
+    p1 = Point(3.0, 4.0)
+    p2 = Point(0.0, 0.0)
+
+    print(p1)  # Affiche les coordonnées de p1
+    print("Distance entre p1 et les coordonnées (0,0) :", p1.distancecoordonnees(0.0, 0.0))
+    print("Distance entre p1 et p2 :", p1.distancePoint(p2))
+
+    p1.deplacer(1.0, -2.0)
+    print("Après déplacement :", p1)
+
+
+___________________________________________________________
+
+
+
+class Cercle:
+    def __init__(self, rayon: float, centre=None):  # centre = Point = None
+        self.__rayon = rayon
+        if centre is not None:
+            self.__centre = centre
+        else:
+            self.__centre = Point(0.0, 0.0)
+
+    # Getter pour le rayon
+    def get_rayon(self):
+        return self.__rayon
+
+    # Setter pour le rayon
+    def set_rayon(self, rayon: float):
+        self.__rayon = rayon
+
+    rayon = property(get_rayon, set_rayon)
+
+    # Getter pour le centre
+    def get_centre(self):
+        return self.__centre
+
+    # Setter pour le centre
+    def set_centre(self, centre: Point):
+        self.__centre = centre
+
+    centre = property(get_centre, set_centre)
+
+    def appartient(self, point: Point) -> bool:
+        try:
+            if not isinstance(point, Point):
+                raise TypeError("L'argument doit être un objet Point.")
+            return self.__centre.distancePoint(point) < self.__rayon
+        except Exception as e:
+            print("Erreur dans appartient :", e)
+            return False
+
+    def intersection(self, autre: 'Cercle') -> bool:
+        try:
+            if not isinstance(autre, Cercle):
+                raise TypeError("L'argument doit être un objet Cercle.")
+            distance = self.__centre.distancePoint(autre.__centre)
+            return distance < (self.__rayon + autre.__rayon)
+        except Exception as e:
+            print("Erreur dans intersection :", e)
+            return False
+
+
