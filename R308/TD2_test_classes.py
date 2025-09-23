@@ -102,16 +102,25 @@ class Cercle:
 
     centre = property(get_centre, set_centre)
 
-    def appartient(selfpoint : Point) -> bool:
-        if self.__centre.distancePoint(point)<self.__rayon :
-            return true
-        else :
-            return false
+    def appartient(self, point: Point) -> bool:
+        try:
+            if not isinstance(point, Point):
+                raise TypeError("L'argument doit être un objet Point.")
+            return self.__centre.distancePoint(point) < self.__rayon
+        except Exception as e:
+            print("Erreur dans appartient :", e)
+            return False
 
-    def intersection(autre)->bool:
-        if self.__centre.distancePoint(autre.__centre)<(self.__rayon+centre.__rayon):
-            return true
-        return false
+    def intersection(self, autre: 'Cercle') -> bool:
+        try:
+            if not isinstance(autre, Cercle):
+                raise TypeError("L'argument doit être un objet Cercle.")
+            distance = self.__centre.distancePoint(autre.__centre)
+            return distance < (self.__rayon + autre.__rayon)
+        except Exception as e:
+            print("Erreur dans intersection :", e)
+            return False
+
 """
 ********************
 Class Rectangle
