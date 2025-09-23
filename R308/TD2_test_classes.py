@@ -1,13 +1,18 @@
 import math
 from operator import truediv
 from symtable import Class
+
 """
+***********************************
+COURS :
+
 Rappel de fonctionnement UML + doc
 __init__ => attribu privé
 __str__
 accesseurs 
     get
     set
+***********************************
 """
 
 
